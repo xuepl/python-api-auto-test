@@ -9,3 +9,5 @@ report
 xml
 # 屏蔽虚拟环境
 venv
+# 屏蔽日志文件
+*.log
