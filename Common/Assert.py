@@ -13,7 +13,7 @@ from Common import Consts
 import json
 
 
-class Assertions:
+class Assertion:
     def __init__(self):
         self.log = Log.MyLog()
 
@@ -31,7 +31,7 @@ class Assertions:
             self.log.error("statusCode error, expected_code is %s, statusCode is %s " % (expected_code, code))
 
             raise
-
+    @classmethod
     def assert_body(self, body, body_msg, expected_msg):
         """
         验证response body中任意属性的值
@@ -50,6 +50,7 @@ class Assertions:
 
             raise
 
+    @classmethod
     def assert_in_text(self, body, expected_msg):
         """
         验证response body中是否包含预期字符串

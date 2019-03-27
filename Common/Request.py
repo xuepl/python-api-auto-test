@@ -47,7 +47,7 @@ class Request:
             print(url)
         try:
 
-            response = requests.get(url, params, headers, cookies)
+            response = requests.get(url, params, headers=headers, cookies = cookies)
 
         except requests.RequestException as e:
             print('%s%s' % ('RequestException url: ', url))
