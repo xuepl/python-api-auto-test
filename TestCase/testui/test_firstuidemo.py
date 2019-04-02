@@ -1,22 +1,17 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+import allure
 from selenium import webdriver
 import time
 import os
+
+from Common.baseui import *
 
 from Common.Assert import Assertion
 
 
 class TestFirstUIDemo:
-    def test222_demo1(self,driver):
-
-
-        #确定chromedriver.exe的位置
-        # driver_path = os.path.join(os.path.dirname(__file__),"../../chromedriver/chromedriver.exe")
-        # # 打开浏览器
-        # driver = webdriver.Chrome(driver_path)
-        # driver.maximize_window()  # 最大化浏览器
-        # driver.implicitly_wait(8)  # 设置隐式时间等待
+    def tttttest_demo1(self,driver):
         time.sleep(2)
         #打开网址
         driver.get("http://192.168.60.132/#/login")
@@ -60,27 +55,15 @@ class TestFirstUIDemo:
         chaxunsousuo  = driver.find_element_by_xpath('//span[contains(text(),"查询搜索")]')
         chaxunsousuo.click()
         time.sleep(2)
-    def test_demo2(self):
-        #确定chromedriver.exe的位置
-        driver_path = os.path.join(os.path.dirname(__file__),"../../chromedriver/chromedriver.exe")
-        # 打开浏览器
-        driver = webdriver.Chrome(driver_path)
-        driver.maximize_window()  # 最大化浏览器
-        driver.implicitly_wait(8)  # 设置隐式时间等待
+
+    def test_demo2(self,driver):
+
         #打开网址
         driver.get("http://192.168.60.132/#/login")
         #输入用户名//input[@name='username']
-        username = driver.find_element_by_xpath("//input[@name='username']")
-        # 清空
-        username.clear()
-        # 填值
-        username.send_keys("admin")
+        send_keys(driver,"//input[@name='username']","admin")
         #输入密码//input[@name='password']
-        password = driver.find_element_by_xpath("//input[@name='password']")
-        # 清空
-        password.clear()
-        # 填值
-        password.send_keys("123456")
+        send_keys(driver, "//input[@name='password']", "123456")
         #点击登录(//span[contains(text(),'登录')])[1]
         login_button = driver.find_element_by_xpath("(//span[contains(text(),'登录')])[1]")
         login_button.click()
@@ -155,8 +138,13 @@ class TestFirstUIDemo:
         #输入排序
         #点击下一步//span[text()='下一步，填写商品促销']
         driver.find_element_by_xpath("//span[text()='下一步，填写商品促销']").click()
+        #allure.attach(driver.get_screenshot_as_png(),'测试一下',allure.attachment_type.PNG)
+        time.sleep(2)
+        #下一步，填写商品属性
+        driver.find_element_by_xpath("//span[text()='下一步，填写商品属性']").click()
         time.sleep(2)
 
-        driver.quit()
-
-        pass
+        driver.switch_to.frame(driver.find_element_by_xpath("(//iframe[contains(@id,'vue-tinymce-')])[1]"))
+        time.sleep(2)
+        driver.find_element_by_id("tinymce").send_keys('ceshiyixia')
+        time.sleep(2)

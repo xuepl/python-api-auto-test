@@ -10,8 +10,32 @@ from selenium import webdriver
 def driver():
     driver_path = os.path.join(os.path.dirname(__file__), "../chromedriver/chromedriver.exe")
     # 打开浏览器
-    driver = webdriver.Chrome(driver_path)
-    driver.maximize_window()  # 最大化浏览器
-    driver.implicitly_wait(8)  # 设置隐式时间等待
-    yield driver
-    driver.quit()
+    dr = webdriver.Chrome(driver_path)
+    dr.maximize_window()  # 最大化浏览器
+    dr.implicitly_wait(8)  # 设置隐式时间等待
+    yield dr
+    dr.quit()
+
+
+@pytest.fixture(scope="session")
+def test_session():
+    print('------------------session之前---------------------------')
+    yield
+    print('------------------session之后---------------------------')
+
+@pytest.fixture(scope="module")
+def test_module():
+    print('------------------module之前---------------------------')
+    yield
+    print('------------------module之后---------------------------')
+@pytest.fixture(scope="class")
+def test_class():
+    print('------------------class之前---------------------------')
+    yield
+    print('------------------class之后---------------------------')
+
+@pytest.fixture(scope="function")
+def test_function():
+    print('------------------function之前---------------------------')
+    yield
+    print('------------------function之后---------------------------')
