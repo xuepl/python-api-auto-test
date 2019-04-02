@@ -15,8 +15,8 @@ check_code_list = [1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2]
 
 def random_date():
     start = int(get_ago_later_stamp(years=-49))  # 生成开始时间戳
-    end = int(time.time())  # 生成结束时间戳
-    t = random.randint(start, end)  # 在开始和结束时间戳中随机取出一个
+    end = int(get_ago_later_stamp(years=-18))  # 生成结束时间戳
+    t = random.randint(start, end)  # 在开始和结束时间戳中间随机取出一个
     date = stamp_to_timestr(t, "%Y%m%d")  # 将时间元组转成格式化字符串（1976-05-21）
     return date
 

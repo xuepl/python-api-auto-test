@@ -1,12 +1,17 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
+
 import pytest
+from selenium import webdriver
 
-l=[["订单管理","订单查询","根据订单号查询",'http://192.168.60.132:8080/order/12']]
 
-def id(fixture_value):
-    return "测试用例名：%s"%(fixture_value[2])
-
-@pytest.fixture(params=l,ids=id)
-def data(request):
-    return request.param
+@pytest.fixture(scope="session")
+def driver():
+    driver_path = os.path.join(os.path.dirname(__file__), "../chromedriver/chromedriver.exe")
+    # 打开浏览器
+    driver = webdriver.Chrome(driver_path)
+    driver.maximize_window()  # 最大化浏览器
+    driver.implicitly_wait(8)  # 设置隐式时间等待
+    yield driver
+    driver.quit()
