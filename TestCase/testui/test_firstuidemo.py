@@ -5,13 +5,16 @@ from selenium import webdriver
 import time
 import os
 
-
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.select import Select
 
 from Common.Assert import Assertion
 from Common.baseui import baseUI
 
 
 class TestFirstUIDemo:
+
     def tttttest_demo1(self,driver):
         time.sleep(2)
         #打开网址
@@ -57,7 +60,7 @@ class TestFirstUIDemo:
         chaxunsousuo.click()
         time.sleep(2)
 
-    def test_demo2(self,driver):
+    def t11111est_demo2(self,driver):
         base = baseUI(driver)
 
         #打开网址
@@ -100,6 +103,69 @@ class TestFirstUIDemo:
         driver.switch_to.default_content()
         #点击下一步
         base.click("点击下一步","//span[contains(text(),'下一步，选择商品关联')]")
-        time.sleep(2)
+        #点击完成商品
+        base.click("点击完成商品","//span[contains(text(),'完成，提交商品')]")
+        #切换到弹框
+        #base.click("点击弹框","//span[contains(text(),'取消')]/parent::*")
+        time.sleep(1)
+
+        time.sleep(5)
+
+
+    def test_demo3(self,driver):
+        base = baseUI(driver)
+        driver.get("file:///E:/softwaredata/01_%E6%95%99%E5%AD%A6/1902%E5%88%9D%E7%BA%A7%E7%8F%AD/demo.html")
+        #base.send_keys("上传文件","//input[@type='file']","‪D:/1.png")
+        #删除日期控件，只读属性
+        #base.remove_attribute_by_xpath("删除日期控件，只读属性","//input[@type='date']","readonly")
+        # base.update_attribute_by_xpath("修改日期控件value值","//input[@type='date']",'value','2019-04-03')
+        # base.select_by_visible_text("选择丁雁玲","//select","丁雁玲")
+        # time.sleep(1)
+        # base.select_by_value("选择魏谦","//select","w")
+        # time.sleep(1)
+        # base.select_by_index("选择丁雁玲","//select",1)
+        # select = Select(driver.find_element_by_xpath("//select"))
+        # select.select_by_visible_text("丁雁玲")
+        # time.sleep(1)
+        # select.select_by_index(2)
+        # time.sleep(1)
+        # select.select_by_value("d")
+        #base.click("点击百度","//a[contains(text(),'百度')]")
+        action = ActionChains(driver)
+        action.key_down(Keys.CONTROL).click(driver.find_element_by_xpath("//a[contains(text(),'百度')]")).key_up(Keys.CONTROL).perform()
+        time.sleep(3)
+        action.key_down(Keys.SHIFT).click(driver.find_element_by_xpath("//a[contains(text(),'百度')]")).key_up(Keys.SHIFT).perform()
+        time.sleep(5)
+
+    def test_demo4(self,driver):
+        base = baseUI(driver)
+        # 打开网址
+        driver.get("http://192.168.60.132/#/login")
+        # 输入用户名//input[@name='username']
+        base.send_keys("输入用户名", "//input[@name='username']", "admin")
+        # 输入密码//input[@name='password']
+        base.send_keys("输入密码", "//input[@name='password']", "123456")
+        # 点击登录(//span[contains(text(),'登录')])[1]
+        base.click('点击登录', "(//span[contains(text(),'登录')])[1]")
+        #点击营销
+        base.click("点击营销","//span[text()='营销']")
+        #点击优惠券列表(//span[contains(text(),'优惠券列表')])[1]
+        base.click("点击优惠券列表","(//span[contains(text(),'优惠券列表')])[1]")
+        #点击第一条数据的编辑(//tr)[2]//span[contains(text(),'编辑')]
+        base.click("点击第一条数据的编辑","(//tr)[2]//span[contains(text(),'编辑')]")
+        #点击提交//span[contains(text(),'提交')]
+        base.click("点击提交","//span[contains(text(),'提交')]")
+        #点击确定//span[contains(text(),'确定')]
+        base.click("点击确定","//span[contains(text(),'确定')]")
+
+
+        time.sleep(4)
+
+
+
+
+
+
+
 
 
