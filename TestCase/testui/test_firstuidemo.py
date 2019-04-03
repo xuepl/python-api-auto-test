@@ -60,7 +60,7 @@ class TestFirstUIDemo:
         chaxunsousuo.click()
         time.sleep(2)
 
-    def t11111est_demo2(self,driver):
+    def test_demo2(self,driver):
         base = baseUI(driver)
 
         #打开网址
@@ -106,7 +106,7 @@ class TestFirstUIDemo:
         #点击完成商品
         base.click("点击完成商品","//span[contains(text(),'完成，提交商品')]")
         #切换到弹框
-        #base.click("点击弹框","//span[contains(text(),'取消')]/parent::*")
+        base.click("点击弹框","//span[contains(text(),'确定')]/parent::*")
         time.sleep(1)
 
         time.sleep(5)
@@ -157,8 +157,10 @@ class TestFirstUIDemo:
         base.click("点击提交","//span[contains(text(),'提交')]")
         #点击确定//span[contains(text(),'确定')]
         base.click("点击确定","//span[contains(text(),'确定')]")
-
-
+        print(driver.page_source)
+        text = base.get_text("获取页面展示文本","//div[@role='alert']/p")
+        print(driver.page_source)
+        #print(text)
         time.sleep(4)
 
 
