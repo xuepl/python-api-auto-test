@@ -60,7 +60,7 @@ class TestFirstUIDemo:
         chaxunsousuo.click()
         time.sleep(2)
 
-    def test_demo2(self,driver):
+    def tes333t_demo2(self,driver):
         base = baseUI(driver)
 
         #打开网址
@@ -112,7 +112,7 @@ class TestFirstUIDemo:
         time.sleep(5)
 
 
-    def test_demo3(self,driver):
+    def te333st_demo3(self,driver):
         base = baseUI(driver)
         driver.get("file:///E:/softwaredata/01_%E6%95%99%E5%AD%A6/1902%E5%88%9D%E7%BA%A7%E7%8F%AD/demo.html")
         #base.send_keys("上传文件","//input[@type='file']","‪D:/1.png")
@@ -159,21 +159,21 @@ class TestFirstUIDemo:
         base.click("点击确定","//span[contains(text(),'确定')]")
         print(driver.page_source)
         text = base.get_text("获取页面展示文本","//div[@role='alert']")
-        print(driver.page_source)
+        #print(driver.page_source)
         #
-        print(text)
-        # Assertion.assert_in_text(text,'修改成功')
+        #print(text)
+        Assertion.assert_in_text(text,'修改成功')
 
     def test_demo5(self,driver):
         base = baseUI(driver)
         # 打开网址
-        driver.get("http://192.168.60.132/#/login")
-        # 输入用户名//input[@name='username']
-        base.send_keys("输入用户名", "//input[@name='username']", "admin")
-        # 输入密码//input[@name='password']
-        base.send_keys("输入密码", "//input[@name='password']", "123456")
-        # 点击登录(//span[contains(text(),'登录')])[1]
-        base.click('点击登录', "(//span[contains(text(),'登录')])[1]")
+        # driver.get("http://192.168.60.132/#/login")
+        # # 输入用户名//input[@name='username']
+        # base.send_keys("输入用户名", "//input[@name='username']", "admin")
+        # # 输入密码//input[@name='password']
+        # base.send_keys("输入密码", "//input[@name='password']", "123456")
+        # # 点击登录(//span[contains(text(),'登录')])[1]
+        # base.click('点击登录', "(//span[contains(text(),'登录')])[1]")
         #点击订单//span[text()='订单']
         base.click("点击订单","//span[text()='订单']")
         #点击订单列表(//span[text()='订单列表'])[1]
