@@ -222,13 +222,60 @@ class TestFirstUIDemo:
             #n.text取出元素的可视文本
             print(n.text)
             #判断可视文本是否与发货订单的编号相同
-            if n.text ==num:
+            if n.text == num:
                 #如果相同，就讲true赋值给b
                 b = True
         #断言，订单状态转换是否正确
         assert True == b
         time.sleep(3)
+    def test_demo6(self, driver):
+        base = baseUI(driver)
+        # 打开网址
+        driver.get("http://192.168.60.132/#/login")
+        # 输入用户名//input[@name='username']
+        base.send_keys("输入用户名", "//input[@name='username']", "admin")
+        # 输入密码//input[@name='password']
+        base.send_keys("输入密码", "//input[@name='password']", "123456")
+        # 点击登录(//span[contains(text(),'登录')])[1]
+        base.click('点击登录', "(//span[contains(text(),'登录')])[1]")
+        # 点击订单//span[text()='订单']
+        base.click("点击订单", "//span[text()='订单']")
+        # 点击订单列表(//span[text()='订单列表'])[1]
+        base.click("点击订单列表", "(//span[text()='订单列表'])[1]")
+        # 点击订单状态//label[contains(text(),'订单状态：')]/following-sibling::div//input
+        base.click("点击订单状态", "//label[contains(text(),'订单状态：')]/following-sibling::div//input")
+        # 点击待发货//span[text()='待发货']
+        base.click("点击待发货", "//span[text()='待发货']")
+        # 点击搜索查询//span[contains(text(),'查询搜索')]
+        base.click("点击搜索查询", "//span[contains(text(),'查询搜索')]")
+        #点击全选(//label[@role='checkbox'])[1]
+        base.click("点击全选","(//label[@role='checkbox'])[1]")
+        #滚动窗口到最后
+        base.scroll_screen('滚动屏幕')
+        #点击批量操作//input[@placeholder='批量操作']
+        base.click("点击批量操作","//input[@placeholder='批量操作']")
+        #选择批量发货//span[text()='批量发货']
+        base.click("选择批量发货","//span[text()='批量发货']")
+        #点击确定//span[contains(text(),'确定')]
+        base.click("点击确定","//span[contains(text(),'确定')]")
+        #获取总共有多少行
+        rows = len(driver.find_elements_by_xpath("//tbody/tr"))
+        #选择物流公司//tbody/tr[1]/td[6]//input
+        #选择快递(//span[text()='中通快递'])[1]
+        #物流单号//tbody/tr[1]/td[7]//input
 
+        for i in range(1,rows+1):
+            # 选择物流公司//tbody/tr[1]/td[6]//input
+            base.click("点击选择物流公司","//tbody/tr[{0}]/td[6]//input".format(i))
+            # 选择快递(//span[text()='中通快递'])[1]
+            base.click("选择快递","(//span[text()='中通快递'])[10]")
+            #物流单号//tbody/tr[1]/td[7]//input
+            base.send_keys("填写物流单号","//tbody/tr[{0}]/td[7]//input".format(i),"265688456486")
+        time.sleep(2)
+
+
+
+        pass
 
 
 
