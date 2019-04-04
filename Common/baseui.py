@@ -16,9 +16,9 @@ def shot(func):
     def function(*args, **kwargs):
         allure.attach(args[0].driver.get_screenshot_as_png(), args[1] + '之前', allure.attachment_type.PNG)
 
-        func(*args, **kwargs)
+        res = func(*args, **kwargs)
         allure.attach(args[0].driver.get_screenshot_as_png(), args[1] + '之后', allure.attachment_type.PNG)
-
+        return res
     return function
 
 
@@ -28,7 +28,7 @@ class baseUI():
         self.driver = driver
 
     def local_element(self,xpath):
-       return WebDriverWait(self.driver, 5, 0.5).until(EC.presence_of_element_located((By.XPATH,xpath)))
+       return WebDriverWait(self.driver, 5, 0.3).until(EC.presence_of_element_located((By.XPATH,xpath)))
 
     @shot
     def send_keys(self,step,xpath,text):
@@ -263,7 +263,7 @@ class baseUI():
         :return:
         '''
         ActionChains(self.driver).move_to_element(self.local_element(xpath)).perform()
-
+    @shot
     def get_text(self,step,xpath):
         '''
         #获取元素的展示文本
@@ -271,7 +271,10 @@ class baseUI():
         :param xpath:xpath
         :return:页面元素的展示文本
         '''
-        element = self.local_element(xpath)
+
+        element=self.local_element(xpath)
+
         return element.text
+
 
 
