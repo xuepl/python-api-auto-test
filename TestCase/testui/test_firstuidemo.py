@@ -1,11 +1,13 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 import allure
+import pytest
 from selenium import webdriver
 import time
 import os
 
 from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 
@@ -111,8 +113,8 @@ class TestFirstUIDemo:
 
         time.sleep(5)
 
-
-    def te333st_demo3(self,driver):
+    @pytest.mark.windows
+    def test_demo3(self,driver):
         base = baseUI(driver)
         driver.get("file:///E:/softwaredata/01_%E6%95%99%E5%AD%A6/1902%E5%88%9D%E7%BA%A7%E7%8F%AD/demo.html")
         #base.send_keys("上传文件","//input[@type='file']","‪D:/1.png")
@@ -133,9 +135,15 @@ class TestFirstUIDemo:
         #base.click("点击百度","//a[contains(text(),'百度')]")
         action = ActionChains(driver)
         action.key_down(Keys.CONTROL).click(driver.find_element_by_xpath("//a[contains(text(),'百度')]")).key_up(Keys.CONTROL).perform()
+        action.key_down(Keys.CONTROL).click(driver.find_element_by_xpath("//a[contains(text(),'京东')]")).key_up(
+            Keys.CONTROL).perform()
+        action.key_down(Keys.CONTROL).click(driver.find_element_by_xpath("//a[contains(text(),'当当')]")).key_up(
+            Keys.CONTROL).perform()
+        base.switch_to_windows_by_title('切换窗口至京东','京东')
         time.sleep(3)
-        action.key_down(Keys.SHIFT).click(driver.find_element_by_xpath("//a[contains(text(),'百度')]")).key_up(Keys.SHIFT).perform()
+        # action.key_down(Keys.SHIFT).click(driver.find_element_by_xpath("//a[contains(text(),'百度')]")).key_up(Keys.SHIFT).perform()
         time.sleep(5)
+        driver.switch_to.window()
 
     def test_demo4(self,driver):
         base = baseUI(driver)
@@ -272,8 +280,7 @@ class TestFirstUIDemo:
             #物流单号//tbody/tr[1]/td[7]//input
             base.send_keys("填写物流单号","//tbody/tr[{0}]/td[7]//input".format(i),"265688456486")
         time.sleep(2)
-
-
+        driver.find_element_by_xpath().get_attribute("class")
 
         pass
 

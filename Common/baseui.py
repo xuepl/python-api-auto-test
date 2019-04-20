@@ -131,7 +131,7 @@ class baseUI():
         current=self.driver.current_window_handle
         handles = self.driver.window_handles
         for handle in handles:
-            self.driver.switch_to_window()
+            self.driver.switch_to_window(handle)
             if(self.driver.title.__contains__(title)):
                 break
         return current
