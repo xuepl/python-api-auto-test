@@ -137,7 +137,7 @@ class baseUI():
         return current
 
     @shot
-    def switch_to_alter_accept(self,step):
+    def switch_to_alert_accept(self,step):
         '''
         #窗口切换至弹窗并确认
         :param step:操作步骤
@@ -152,7 +152,7 @@ class baseUI():
         self.driver.switch_to_alert().accept()
 
     @shot
-    def switch_to_alter_dismiss(self,step):
+    def switch_to_atert_dismiss(self,step):
         '''
         #窗口切换至弹窗并取消
         :param step:操作步骤
@@ -167,7 +167,7 @@ class baseUI():
         self.driver.switch_to_alert().dismiss()
 
     @shot
-    def switch_to_alter_send_keys(self,step,text):
+    def switch_to_alert_send_keys(self,step,text):
         '''
         #窗口切换至弹窗输入内容并确定
         :param step: 操作步骤

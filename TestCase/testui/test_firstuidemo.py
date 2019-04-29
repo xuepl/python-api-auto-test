@@ -149,11 +149,11 @@ class TestFirstUIDemo:
     def test_demo4(self,driver):
         base = baseUI(driver)
         # 打开网址
-        driver.get("http://192.168.60.132/#/login")
+        driver.get("http://192.168.1.137/#/login")
         # 输入用户名//input[@name='username']
-        base.send_keys("输入用户名", "//input[@name='username']", "admin")
+        # base.send_keys("输入用户名", "//input[@name='username']", "admin")
         # 输入密码//input[@name='password']
-        base.send_keys("输入密码", "//input[@name='password']", "123456")
+        # base.send_keys("输入密码", "//input[@name='password']", "123456")
         # 点击登录(//span[contains(text(),'登录')])[1]
         base.click('点击登录', "(//span[contains(text(),'登录')])[1]")
         #点击营销
