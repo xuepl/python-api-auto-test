@@ -64,6 +64,7 @@ class TestFirstUIDemo:
 
     def tes333t_demo2(self,driver):
         base = baseUI(driver)
+        
 
         #打开网址
         driver.get("http://192.168.60.132/#/login")
