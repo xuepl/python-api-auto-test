@@ -25,10 +25,10 @@ if __name__ == '__main__':
 
     pytest.main(['-v', '--alluredir',xml_report_path,'./TestCase'])
     #cmd = 'allure generate %s -o %s' % (xml_report_path, html_report_path)
-    cmd = "allure generate %s -o ./Report/report/ --clean"%(xml_report_path)
-
-    try:
-        shell.invoke(cmd)
-    except Exception:
-        log.error('执行用例失败，请检查环境配置')
-        raise
+    # cmd = "allure generate %s -o ./Report/report/ --clean"%(xml_report_path)
+    #
+    # try:
+    #     shell.invoke(cmd)
+    # except Exception:
+    #     log.error('执行用例失败，请检查环境配置')
+    #     raise

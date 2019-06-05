@@ -19,5 +19,7 @@ def make_info():
     info_dic['地址'] = make_addr(id_num)
     info_dic['姓名'] = make_name()
     return info_dic
+
+
 if __name__ == '__main__':
     print(make_info())

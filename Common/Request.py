@@ -8,6 +8,7 @@ import random
 import requests
 from Common import Log
 from Common.Consts import *
+from Common.conf import *
 
 
 class Request:
@@ -43,7 +44,7 @@ class Request:
         """
 
         if not url.startswith('http://'):
-            url = '%s%s' % ('http://', url)
+            url = '%s%s' % (HOST, url)
             print(url)
         try:
 

@@ -43,13 +43,13 @@ def read_excel_list(file):
 
 
 if __name__ == '__main__':
-    excel_list = read_excel_list("../document/test.xlsx")
+    excel_list = read_excel_list("E:\\ceshi.xls")
 
-    idsList = []
-    len1 = len(excel_list)
-    for i in range(len1):
-        a = excel_list[i].pop()
-        idsList.append(a)
+    # idsList = []
+    # len1 = len(excel_list)
+    # for i in range(len1):
+    #     a = excel_list[i].pop()
+    #     idsList.append(a)
 
     # read_excel_dict("../document/test.xlsx")
     # idsList = []
@@ -58,4 +58,4 @@ if __name__ == '__main__':
     #     idsList.append(excel_list[i].pop())
 
     print(excel_list)
-    print(idsList)
+    # print(idsList)

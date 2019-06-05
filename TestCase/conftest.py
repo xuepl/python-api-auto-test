@@ -3,8 +3,10 @@
 import os
 
 import pytest
+import requests
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+
+
 
 
 @pytest.fixture(scope="session")
@@ -14,8 +16,23 @@ def driver():
     dr = webdriver.Chrome(driver_path)
     dr.maximize_window()  # 最大化浏览器
     dr.implicitly_wait(8)  # 设置隐式时间等待
+
     yield dr
     dr.quit()
+
+
+@pytest.fixture(scope="session")
+def token():
+    data = {
+        "password": "123456",
+        "username": "admin"
+    }
+    r = requests.post(url='http://192.168.60.132:8080/admin/login', json=data)
+    r_json = r.json()
+    print(r_json)
+    assert 200 == r_json["code"]
+    global token
+    return {"Authorization":r_json["data"]['tokenHead'] + r_json["data"]['token']}
 
 
 @pytest.fixture(scope="session")
