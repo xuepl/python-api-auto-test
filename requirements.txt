@@ -2,7 +2,7 @@ pytest==4.3.0
 allure-pytest==2.6.0
 selenium==3.141.0
 xlrd==1.2.0
-requests==0.9.3
+requests==2.20.0
 PyAutoGUI==0.9.43
 pycryptodome==3.7.3
 
